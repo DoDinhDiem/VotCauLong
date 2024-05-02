@@ -1,0 +1,78 @@
+<p-toast></p-toast>
+<p-toolbar styleClass="mb-4 gap-2">
+  <ng-template pTemplate="left">
+    <button pButton pRipple label="Thêm mới" icon="pi pi-plus" class="button-radius me-2" (click)="openNew()"></button>
+  </ng-template>
+
+  <ng-template pTemplate="right">
+    <button style="background: #1d4e89; border: 1px solid #1d4e89" pButton pRipple label="Xuất file Excel"
+      icon="pi pi-upload" class="p-button-help button-radius"></button>
+  </ng-template>
+</p-toolbar>
+
+<p-table #dt [value]="thuonghieus" [paginator]="true" [rows]="10" [globalFilterFields]="['tenThuongHieu' ]"
+  [tableStyle]="{ 'min-width': '60rem' }" [rowHover]="true"
+  currentPageReportTemplate="Hiển thị từ {first} đến {last} của {totalRecords} mục" [showCurrentPageReport]="true"
+  [scrollable]="true">
+  <ng-template pTemplate="caption">
+    <div class="d-flex align-items-center justify-content-between">
+      <h5 class="m-0">{{ title }}</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+          placeholder="Tìm kiếm..." />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center" pSortableColumn="tenThuongHieu">
+        Tên thương hiệu<p-sortIcon field="tenThuongHieu"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="trangThai">
+        Ẩn/Hiện<p-sortIcon field="trangThai"></p-sortIcon>
+      </th>
+      <th class="text-center">Chức năng</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-thuonghieu>
+    <tr>
+      <td class="text-center">{{ thuonghieu.tenThuongHieu }}</td>
+      <td class="text-center">
+        <p-inputSwitch [(ngModel)]="thuonghieu.trangThai" (ngModelChange)="toggleTrangThai(thuonghieu)"></p-inputSwitch>
+      </td>
+      <td class="text-center">
+        <button pButton pRipple icon="pi pi-pencil" style="margin-right: 5px"
+          class="p-button-rounded p-button-success me-2 action-button" (click)="edit(thuonghieu)"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning action-button"
+          (click)="deleteOnly(thuonghieu)"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="d-flex align-items-center justify-content-between">
+      Tổng cộng có {{ thuonghieus ? thuonghieus.length : 0 }} thương hiệu.
+    </div>
+  </ng-template>
+</p-table>
+<p-dialog [(visible)]="Dialog" [style]="{ width: '450px' }" [header]="title" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="field mb-3">
+      <label for="tenThuongHieu">Tên thương hiệu</label>
+      <input type="text" pInputText id="tenThuongHieu" [(ngModel)]="thuonghieu.tenThuongHieu" required autofocus />
+      <small class="p-error" *ngIf="submitted && !thuonghieu.tenThuongHieu">Tên loại là bắt buộc.</small>
+    </div>
+    <div class="field mb-3">
+      <label for="trangThai">Trạng thái</label>
+      <br>
+      <p-inputSwitch [(ngModel)]="thuonghieu.trangThai"></p-inputSwitch>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Hủy" icon="pi pi-times" class="p-button-text" (click)="hidenDialog()"></button>
+    <button pButton pRipple label="{{ Save }}" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px', }"></p-confirmDialog>

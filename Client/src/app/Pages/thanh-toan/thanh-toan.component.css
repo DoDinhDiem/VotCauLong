@@ -1,0 +1,25 @@
+.table.table-summary {
+  line-height: 1.43;
+  color: #666;
+  border: none;
+  margin-bottom: 0;
+}
+
+.table.table-summary tbody td {
+  padding: 0;
+  height: 70px;
+  border-bottom: 0.1rem solid #ebebeb;
+}
+
+.table.table-summary .summary-subtotal td {
+  color: #333;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.table.table-summary .summary-total td {
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: #c96;
+  border-bottom: none;
+}

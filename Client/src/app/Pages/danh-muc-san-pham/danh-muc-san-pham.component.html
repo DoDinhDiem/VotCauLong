@@ -1,0 +1,189 @@
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <ul class="list-inline list-unstyled">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class='active'>{{tenLSP}}</li>
+      </ul>
+    </div>
+    <!-- /.breadcrumb-inner -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.breadcrumb -->
+<div class="body-content outer-top-xs">
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-3 sidebar'>
+        <!-- /.side-menu -->
+        <!-- ================================== TOP NAVIGATION : END ================================== -->
+        <div class="sidebar-module-container">
+          <div class="sidebar-filter">
+            <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
+            <div class="sidebar-widget wow fadeInUp">
+              <h3 class="section-title">Lọc</h3>
+              <div class="widget-header">
+                <h4 class="widget-title">Thể loại</h4>
+              </div>
+              <div class="sidebar-widget-body">
+                <div class="accordion">
+                  <div class="accordion-group">
+                    <div class="accordion-heading" *ngFor="let item of loaiSanPham">
+                      <a [routerLink]="['/danhmuc', item.id]"> {{ item.tenLoai }} </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.accordion -->
+              </div>
+              <!-- /.sidebar-widget-body -->
+            </div>
+            <!-- /.sidebar-widget -->
+            <!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
+
+            <!-- ============================================== PRICE SILDER============================================== -->
+            <div class="sidebar-widget wow fadeInUp">
+              <div class="widget-header">
+                <h4 class="widget-title">Khoảng giá</h4>
+              </div>
+              <div class="sidebar-widget-body m-t-10">
+                <div class="price-range-holder">
+                  <span class="min-max">
+                    <span class="pull-left">{{giaMin | number}}</span>
+                    <span class="pull-right">{{giaMax | number}}</span>
+                  </span>
+                  <p-slider [(ngModel)]="giaMax" [max]="giaRange" (onChange)="onSlide()"></p-slider>
+                </div>
+              </div>
+              <!-- /.sidebar-widget-body -->
+            </div>
+            <!-- /.sidebar-widget -->
+            <!-- ============================================== PRICE SILDER : END ============================================== -->
+            <!-- ============================================== MANUFACTURES============================================== -->
+            <div class="sidebar-widget wow fadeInUp">
+              <div class="widget-header">
+                <h4 class="widget-title">Thương hiệu</h4>
+              </div>
+              <div class="sidebar-widget-body">
+                <ul class="list">
+                  <li *ngFor="let item of hangSanPham"><a
+                      (click)="onHangId(item.thuonghieuId)">{{item.tenThuongHieu}}</a>
+                  </li>
+                </ul>
+                <!--<a href="#" class="lnk btn btn-primary">Show Now</a>-->
+              </div>
+              <!-- /.sidebar-widget-body -->
+            </div>
+          </div>
+          <!-- /.sidebar-filter -->
+        </div>
+        <!-- /.sidebar-module-container -->
+      </div>
+      <!-- /.sidebar -->
+      <div class='col-md-9'>
+        <!-- ========================================== SECTION – HERO ========================================= -->
+
+        <div class="clearfix filters-container m-t-10">
+          <div class="row">
+
+            <!-- /.col -->
+            <div class="col col-sm-12 col-md-6">
+              <div class="col col-sm-3 col-md-6 no-padding">
+                <div class="lbl-cnt flex"> <span class="lbl">Sắp xếp</span>
+                  <div class="fld inline ">
+                    <div class="select">
+                      <select name="sortby" id="sortby" class="form-control" (change)="onSapXepChange()"
+                        [(ngModel)]="sapxepSelects">
+                        <option *ngFor="let item of sapxep" [value]="item.value">{{ item.name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <div class="search-result-container ">
+          <div id="myTabContent" class="tab-content category-list">
+            <div class="tab-pane active " id="grid-container">
+              <div class="category-product">
+                <div class="row">
+                  <div class="col-sm-6 col-md-4 wow fadeInUp"
+                    *ngFor="let item of sanPhams?.items | paginate: { itemsPerPage: 30, currentPage: p }">
+                    <div class="products">
+                      <div class="product">
+                        <div class="product-image">
+                          <div class="image"> <a [routerLink]="['/chitiet', item.id]"><img
+                                src="{{ baseUrl }}/Uploads/Products/{{ item.image }}" alt="{{ item.tenSanPham }}"></a>
+                          </div>
+                        </div>
+                        <!-- /.product-image -->
+
+                        <div class="product-info text-left">
+                          <h3 class="name"><a [routerLink]="['/chitiet', item.id]">{{ item.tenSanPham }}</a></h3>
+                          <div class="rating rateit-small"></div>
+                          <div class="description"></div>
+                          <div class="product-price" *ngIf="item.phanTram > 0">
+                            <span class="price"> {{ item.giaBan - (item.giaBan * item.phanTram)/100 | number}} </span>
+                            <span class="price-before-discount">{{ item.giaBan | number}}</span>
+                          </div>
+
+                          <div class="product-price" *ngIf="item.phanTram <= 0">
+                            <span class="price"> {{ item.giaBan | number}} </span>
+                          </div>
+                          <!-- /.product-price -->
+
+                        </div>
+                        <!-- /.product-info -->
+                        <div class="cart clearfix animate-effect">
+                          <div class="action">
+                            <ul class="list-unstyled">
+                              <li class="add-cart-button btn-group">
+                                <button class="btn btn-primary icon" (click)="addToCart(item)" data-toggle="dropdown"
+                                  type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                <button class="btn btn-primary cart-btn" type="button">Thêm vào giỏ</button>
+                              </li>
+
+                            </ul>
+                          </div>
+                          <!-- /.action -->
+                        </div>
+                        <!-- /.cart -->
+                      </div>
+                      <!-- /.product -->
+
+                    </div>
+                    <!-- /.products -->
+                  </div>
+                  <!-- /.item -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.category-product -->
+
+            </div>
+            <!-- /.tab-pane #list-container -->
+          </div>
+          <!-- /.tab-content -->
+          <div class="clearfix filters-container">
+            <div class="text-right">
+              <div class="pagination-container">
+                <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
+                <!-- /.list-inline -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <p-toast></p-toast>
+  <!-- /.container -->
+
+</div>

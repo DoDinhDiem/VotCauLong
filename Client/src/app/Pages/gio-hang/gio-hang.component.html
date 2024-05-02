@@ -1,0 +1,95 @@
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <ul class="list-inline list-unstyled">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class='active'>Giỏ hàng</li>
+      </ul>
+    </div><!-- /.breadcrumb-inner -->
+  </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+
+<div class="body-content outer-top-xs">
+  <div class="container">
+    <div class="row ">
+      <div class="shopping-cart">
+        <div class="shopping-cart-table ">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="cart-romove item">Xóa</th>
+                  <th class="cart-description item">Ảnh</th>
+                  <th class="cart-product-name item">Sản phẩm</th>
+                  <th class="cart-qty item">Số lượng</th>
+                  <th class="cart-sub-total item">Đơn giá</th>
+                  <th class="cart-total last-item">Thành tiền</th>
+                </tr>
+              </thead><!-- /thead -->
+              <tfoot>
+                <tr>
+                  <td colspan="7">
+                    <div class="shopping-cart-btn">
+                      <span class="">
+                        <a [routerLink]="['/']" class="btn btn-upper btn-primary outer-left-xs">Tiếp tục mua sắm</a>
+                        <a [routerLink]="['/checkout']"
+                          class="btn btn-upper btn-primary pull-right outer-right-xs">Thanh toán</a>
+                      </span>
+                    </div><!-- /.shopping-cart-btn -->
+                  </td>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr *ngFor="let item of cartItems">
+                  <td class="romove-item"><a (click)="removeFromCart(item)" title="cancel" class="icon"><i
+                        class="fa fa-trash-o"></i></a></td>
+                  <td class="cart-image">
+                    <a class="entry-thumbnail" [routerLink]="['/chitiet', item.id]">
+                      <img [src]="baseUrl + 'Uploads/Products/' + item.image" alt="">
+                    </a>
+                  </td>
+                  <td class="cart-product-name-info">
+                    <h4 class='cart-product-description'><a [routerLink]="['/chitiet', item.id]">{{ item.tenSanPham
+                        }}</a></h4>
+
+                  </td>
+                  <td class="cart-product-quantity">
+                    <div class="quant-input">
+                      <div class="arrows">
+                        <div class="arrow plus gradient"><span class="ir" (click)="incrementQuantity(item)"><i
+                              class="icon fa fa-sort-asc"></i></span>
+                        </div>
+                        <div class="arrow minus gradient"><span class="ir" (click)="decrementQuantity(item)"><i
+                              class="icon fa fa-sort-desc"></i></span>
+                        </div>
+                      </div>
+                      <input type="text" [name]="item.id" [(ngModel)]="item.soLuong">
+                    </div>
+                  </td>
+                  <td class="cart-product-sub-total"><span class="cart-sub-total-price">{{item.thanhTien |
+                      number}}</span></td>
+                  <td class="cart-product-grand-total"><span class="cart-grand-total-price">{{ calculateSubtotal(item) |
+                      number }}</span></td>
+                </tr>
+              </tbody><!-- /tbody -->
+            </table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="cart-sub-total">
+                      Tổng<span class="inner-left-md">{{ totalPrice
+                        | number}}</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead><!-- /tbody -->
+            </table><!-- /table -->
+          </div>
+        </div>
+        <!-- /.cart-shopping-total -->
+      </div><!-- /.shopping-cart -->
+    </div> <!-- /.row -->
+    <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
+  </div><!-- /.container -->
+</div>

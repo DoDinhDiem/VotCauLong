@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|c:\\users\\dodin\\onedrive\\m\u00E1y t\u00EDnh\\doanduchip\\backend\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|c:\\users\\dodin\\onedrive\\m\u00E1y t\u00EDnh\\doanduchip\\backend\\backend\\models\\hoadonban.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\models\\hoadonban.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|c:\\users\\dodin\\onedrive\\m\u00E1y t\u00EDnh\\doanduchip\\backend\\backend\\models\\votcaulongcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\models\\votcaulongcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|c:\\users\\dodin\\onedrive\\m\u00E1y t\u00EDnh\\doanduchip\\backend\\backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|c:\\users\\dodin\\onedrive\\m\u00E1y t\u00EDnh\\doanduchip\\backend\\backend\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|c:\\users\\dodin\\onedrive\\m\u00E1y t\u00EDnh\\doanduchip\\backend\\backend\\controllers\\nhanviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\controllers\\nhanviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|c:\\users\\dodin\\onedrive\\m\u00E1y t\u00EDnh\\doanduchip\\backend\\backend\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B65ADB32-58B4-4956-B5DB-AA47D28E71F2}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "BackEnd\\appsettings.json",
+              "ToolTip": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\appsettings.json",
+              "RelativeToolTip": "BackEnd\\appsettings.json",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-02T13:29:13.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Hoadonban.cs",
+              "DocumentMoniker": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Models\\Hoadonban.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Models\\Hoadonban.cs",
+              "ToolTip": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Models\\Hoadonban.cs",
+              "RelativeToolTip": "BackEnd\\Models\\Hoadonban.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAADwvxMAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T13:14:10.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "votcaulongContext.cs",
+              "DocumentMoniker": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Models\\votcaulongContext.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Models\\votcaulongContext.cs",
+              "ToolTip": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Models\\votcaulongContext.cs",
+              "RelativeToolTip": "BackEnd\\Models\\votcaulongContext.cs",
+              "ViewState": "AQIAALEAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T13:13:36.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Sanpham.cs",
+              "DocumentMoniker": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Models\\Sanpham.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Models\\Sanpham.cs",
+              "ToolTip": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Models\\Sanpham.cs",
+              "RelativeToolTip": "BackEnd\\Models\\Sanpham.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:59:57.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Controllers\\UserController.cs",
+              "RelativeToolTip": "BackEnd\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAB8CAAAAAAAAAAAUwCgCAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:59:27.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NhanVienController.cs",
+              "DocumentMoniker": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Controllers\\NhanVienController.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Controllers\\NhanVienController.cs",
+              "ToolTip": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Controllers\\NhanVienController.cs",
+              "RelativeToolTip": "BackEnd\\Controllers\\NhanVienController.cs",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAjwHgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:59:13.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\dodin\\OneDrive\\M\u00E1y t\u00EDnh\\DoAnDucHip\\BackEnd\\BackEnd\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "BackEnd\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAjwDsAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:59:11.537Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

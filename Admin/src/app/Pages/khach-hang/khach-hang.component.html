@@ -1,0 +1,45 @@
+<p-table #dt [value]="khachhangs" [paginator]="true" [rows]="10" [globalFilterFields]="['hoTen']"
+  [tableStyle]="{ 'min-width': '60rem' }" [rowHover]="true"
+  currentPageReportTemplate="Hiển thị từ {first} đến {last} của {totalRecords} mục" [showCurrentPageReport]="true"
+  [scrollable]="true">
+  <ng-template pTemplate="caption">
+    <div class="d-flex align-items-center justify-content-between">
+      <h5 class="m-0">{{ title }}</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+          placeholder="Search..." />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center" pSortableColumn="hoTen">
+        Họ tên<p-sortIcon field="hoTen"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="email">
+        Email<p-sortIcon field="email"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="soDienThoai">
+        Số điện thoại<p-sortIcon field="soDienThoai"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="diaChi">
+        Địa chỉ<p-sortIcon field="diaChi"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-khachhang>
+    <tr>
+      <td class="text-center">{{ khachhang.hoTen }}</td>
+      <td class="text-center">{{ khachhang.email }}</td>
+      <td class="text-center">{{ khachhang.soDienThoai }}</td>
+      <td class="text-center">{{ khachhang.diaChi }}</td>
+      <td class="text-center">{{ khachhang.gioiTinh }}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="d-flex align-items-center justify-content-between">
+      Tổng cộng có {{ khachhangs ? khachhangs.length : 0 }} loại sản phẩm.
+    </div>
+  </ng-template>
+</p-table>

@@ -1,0 +1,86 @@
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <ul class="list-inline list-unstyled">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class='active'>{{ tinTuc?.tieuDe }}</li>
+      </ul>
+    </div><!-- /.breadcrumb-inner -->
+  </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+
+<div class="body-content">
+  <div class="container">
+    <div class="row">
+      <div class="blog-page">
+        <div class="col-md-9">
+          <div class="blog-post wow fadeInUp">
+            <img class="img-responsive" src="{{ baseUrl }}/Uploads/TinTuc/{{ tinTuc?.image }}" alt="">
+            <h1>{{ tinTuc?.tieuDe }}</h1>
+            <span class="author">{{ tinTuc?.name }}</span>
+            <span class="date-time">{{ tinTuc?.createdAt |date:'dd/MM/yyyy' }}</span>
+            <p [innerHTML]="tinTuc?.noiDung"></p>
+            <div class="social-media">
+              <span>Chia sẻ:</span>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-linkedin"></i></a>
+              <a href=""><i class="fa fa-rss"></i></a>
+              <a href="" class="hidden-xs"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 sidebar">
+
+
+
+          <div class="sidebar-module-container">
+            <div class="search-area outer-bottom-small">
+              <form>
+                <div class="control-group">
+                  <input placeholder="Type to search" class="search-field">
+                  <a href="#" class="search-button"></a>
+                </div>
+              </form>
+            </div>
+
+            <!-- ==============================================CATEGORY============================================== -->
+            <div class="sidebar-widget wow fadeInUp">
+              <h3 class="section-title">Lọc</h3>
+              <div class="widget-header">
+                <h4 class="widget-title">Thể loại</h4>
+              </div>
+              <div class="sidebar-widget-body">
+                <div class="accordion">
+                  <div class="accordion-group">
+                    <div class="accordion-heading" *ngFor="let item of loaiSanPham">
+                      <a [routerLink]="['/danhmuc', item.id]"> {{ item.tenLoai }} </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.accordion -->
+              </div>
+              <!-- /.sidebar-widget-body -->
+            </div>
+            <!-- ============================================== CATEGORY : END ============================================== -->
+            <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
+              <h3 class="section-title">Mới nhất</h3>
+              <div class="tab-content" style="padding-left:0">
+                <div class="tab-pane active m-t-20" id="popular">
+                  <div class="blog-post inner-bottom-30 " *ngFor="let item of tinTucTuongTu">
+                    <img class="img-responsive" src="{{ baseUrl }}/Uploads/TinTuc/{{ item.image }}" alt="">
+                    <h4><a [routerLink]="['/blogDetail', item?.id]">{{ item.tieuDe }}</a></h4>
+                    <span class="date-time">{{ item.createdAt | date: 'dd/MM/yyyy' }}</span>
+                    <p [innerHTML]="item.noiDung.length > 100 ? (item.noiDung | slice:0:85) + '...' : item.noiDung"></p>
+
+                  </div>
+                </div>`
+              </div>
+            </div>
+            <!-- ============================================== PRODUCT TAGS : END ============================================== -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

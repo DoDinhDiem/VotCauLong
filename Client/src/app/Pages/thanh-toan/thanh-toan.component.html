@@ -1,0 +1,134 @@
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <ul class="list-inline list-unstyled">
+        <li><a href="#">Home</a></li>
+        <li class='active'>Checkout</li>
+      </ul>
+    </div><!-- /.breadcrumb-inner -->
+  </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+
+<div class="body-content">
+  <div class="container">
+    <div class="checkout-box ">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel-group checkout-steps" id="accordion">
+            <!-- checkout-step-01  -->
+            <div class="panel panel-default checkout-step-01">
+
+              <!-- panel-heading -->
+              <div class="panel-heading">
+                <h4 class="unicase-checkout-title">
+                  <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapseOne">
+                    <span>Thông tin</span>
+                  </a>
+                </h4>
+              </div>
+              <!-- panel-heading -->
+
+              <div id="collapseOne" class="panel-collapse collapse in">
+
+                <!-- panel-body  -->
+                <div class="panel-body">
+                  <div class="row">
+
+                    <!-- guest-login -->
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="firstname">Họ tên <span class="require">*</span></label>
+                        <input type="text" id="firstname" [(ngModel)]="khachhang.hoTen" name="firstname"
+                          class="input form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="telephone">Số điện thoại <span class="require">*</span></label>
+                        <input type="text" id="telephone" [(ngModel)]="khachhang.soDienThoai" name="telephone"
+                          class="input form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="address1">Địa chỉ</label>
+                        <input type="text" id="address1" [(ngModel)]="khachhang.diaChi" name="address1"
+                          class="input form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="address2">Ghi chú</label>
+                        <textarea type="text" id="address2" [(ngModel)]="hoadon.ghiChu" name="address2"
+                          class="input form-control"></textarea>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- panel-body  -->
+
+              </div><!-- row -->
+            </div>
+
+
+          </div><!-- /.checkout-steps -->
+        </div>
+        <div class="col-md-4">
+          <!-- checkout-progress-sidebar -->
+          <div class="checkout-progress-sidebar ">
+            <div class="panel-group">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="unicase-checkout-title">Đơn hàng</h4>
+                </div>
+                <table class="table table-summary">
+                  <thead>
+                    <tr>
+                      <th>Sản phẩm</th>
+                      <th>Tổng</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of cartItems">
+                      <td>{{ item.tenSanPham }}</td>
+                      <td> {{ calculateSubtotal(item) | number }}</td>
+                    </tr>
+                    <tr class="summary-subtotal">
+                      <td>Tổng phụ:</td>
+                      <td> {{ totalPrice | number}}</td>
+                    </tr>
+                    <tr>
+                      <td>Vận chuyển</td>
+                      <td>Miễn phí</td>
+                    </tr>
+                    <tr class="summary-total">
+                      <td>Tổng:</td>
+                      <td>{{ totalPrice | number}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="checkbox">
+                  <label>
+                    <input type="radio" name="paymentMethod" (change)="selectPaymentMethod('vnpay')"
+                      [checked]="selectedPaymentMethod === 'vnpay'">Thanh tóa qua ví VNPAY
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="radio" name="paymentMethod" (change)="selectPaymentMethod('cash')"
+                      [checked]="selectedPaymentMethod === 'cash'">Thanh toán khi nhận hàng
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Đặt hàng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.row -->
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>

@@ -1,0 +1,113 @@
+<aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link " [routerLink]="['/']">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="javascript:void(0)" (click)="toggleProduct()">
+        <i class="bi bi-menu-button-wide"></i>
+        <span>Sản phẩm</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul *ngIf="isProductOpen" id="components-nav" class="nav-content collapse show">
+        <li>
+          <a [routerLink]="['/loaisp']">
+            <i class="bi bi-circle"></i><span>Loại sản phẩm</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/thuonghieu']">
+            <i class="bi bi-circle"></i><span>Thương hiệu</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/sanpham']">
+            <i class="bi bi-circle"></i><span>Sản phẩm</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Components Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" [routerLink]="['/tintuc']">
+        <i class="bi bi-layout-text-window-reverse"></i>
+        <span>Tin tức</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="javascript:void(0)" (click)="toggleBill()">
+        <i class="bi bi-bar-chart"></i>
+        <span>Hóa đơn</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul *ngIf="isBillOpen" id="forms-nav" class="nav-content collapse show">
+        <li>
+          <a [routerLink]="['/nhacc']">
+            <i class="bi bi-circle"></i><span>Nhà cung cấp</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/hoadonnhap']">
+            <i class="bi bi-circle"></i><span>Hóa đơn nhập</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/hoadonban']">
+            <i class="bi bi-circle"></i><span>Hóa đơn bán</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Forms Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="javascript:void(0)" (click)="toggleHuman()">
+        <i class="bi bi-person"></i>
+        <span>Con người</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul *ngIf="isHumanOpen" id="tables-nav" class="nav-content collapse show">
+        <li>
+          <a [routerLink]="['/nhanvien']">
+            <i class="bi bi-circle"></i><span>Nhân viên</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/khachhang']">
+            <i class="bi bi-circle"></i><span>Khách hàng</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Tables Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="javascript:void(0)" (click)="toggleSetting()">
+        <i class="bi bi-gear"></i>
+        <span>Hệ thống</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul *ngIf="isSettingOpen" id="charts-nav" class="nav-content collapse show">
+        <li>
+          <a [routerLink]="['/slide']">
+            <i class="bi bi-circle"></i><span>Slide</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/lienhe']">
+            <i class="bi bi-circle"></i><span>Liên hệ</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/quyen']">
+            <i class="bi bi-circle"></i><span>Phân quyền</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</aside>

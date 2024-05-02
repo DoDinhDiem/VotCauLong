@@ -1,0 +1,184 @@
+<p-toast></p-toast>
+<p-toolbar styleClass="mb-4 gap-2">
+  <ng-template pTemplate="left">
+    <button pButton pRipple label="Thêm mới" icon="pi pi-plus" class="button-radius me-2" (click)="openNew()"></button>
+  </ng-template>
+
+  <ng-template pTemplate="right">
+    <button pButton pRipple label="Xuất file Excel" icon="pi pi-upload" class="p-button-help button-radius"></button>
+  </ng-template>
+</p-toolbar>
+
+<p-table #dt [value]="nhanviens" [paginator]="true" [rows]="10" [globalFilterFields]="[
+          'hoTen',
+      ]" [tableStyle]="{ 'min-width': '60rem' }" [rowHover]="true"
+  currentPageReportTemplate="Hiển thị từ {first} đến {last} của {totalRecords} mục" [showCurrentPageReport]="true"
+  [scrollable]="true">
+  <ng-template pTemplate="caption">
+    <div class="d-flex align-items-center justify-content-between">
+      <h5 class="m-0">{{ title }}</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="
+                          dt.filterGlobal($event.target.value, 'contains' )" placeholder="Search..." />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center">Ảnh</th>
+      <th class="text-center" pSortableColumn="hoTen">
+        Họ tên<p-sortIcon field="hoTen"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="userName">
+        UserName<p-sortIcon field="userName"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="email">
+        Email<p-sortIcon field="email"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="soDienThoai">
+        Số điện thoại<p-sortIcon field="soDienThoai"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="diaChi">
+        Địa chỉ<p-sortIcon field="diaChi"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="gioiTinh">
+        Giới tính<p-sortIcon field="gioiTinh"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="ngaySinh">
+        Ngày sinh<p-sortIcon field="ngaySinh"></p-sortIcon>
+      </th>
+
+      <th class="text-center">Quyền</th>
+      <th class="text-center" pSortableColumn="trangThai">
+        Ẩn/Hiện<p-sortIcon field="trangThai"></p-sortIcon>
+      </th>
+      <th class="text-center">Chức năng</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-nhanvien>
+    <tr>
+      <td class="text-center">
+        <img style="width: 120px" src="{{ baseUrl }}Uploads/NhanVien/{{ nhanvien.avatar}}"
+          alt="{{ nhanvien.avatar }}" />
+      </td>
+      <td class="text-center">{{ nhanvien.hoTen }}</td>
+      <td class="text-center">{{ nhanvien.userName }}</td>
+      <td class="text-center">{{ nhanvien.email }}</td>
+      <td class="text-center">{{ nhanvien.soDienThoai }}</td>
+      <td class="text-center">{{ nhanvien.diaChi }}</td>
+      <td class="text-center">{{ nhanvien.gioiTinh }}</td>
+      <td class="text-center">
+        {{ nhanvien.ngaySinh | date : "dd/MM/yyyy" }}
+      </td>
+      <td class="text-center">
+        {{ nhanvien.tenRole }}
+      </td>
+      <td class="text-center">
+        <p-inputSwitch [(ngModel)]="nhanvien.trangThai" (ngModelChange)="toggleTrangThai(nhanvien)"></p-inputSwitch>
+      </td>
+      <td class="text-center">
+        <button pButton pRipple icon="pi pi-pencil" style="margin-right: 5px"
+          class="p-button-rounded p-button-success me-2 action-button" (click)="edit(nhanvien)"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning action-button"
+          (click)="deleteOnly(nhanvien)"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="d-flex align-items-center justify-content-between">
+      Tổng cộng có {{ nhanviens ? nhanviens.length : 0 }} nhân viên.
+    </div>
+  </ng-template>
+</p-table>
+<p-dialog [(visible)]="Dialog" [style]="{ width: '1200px' }" [header]="title" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="row grid">
+      <div class="field mb-3 col-4">
+        <label for="roleId">Quyền</label>
+        <p-dropdown [options]="quyen" [(ngModel)]="selectedQuyenId" optionLabel="name" [filter]="true" filterBy="name">
+        </p-dropdown>
+      </div>
+
+      <div class="field mb-3 col-4">
+        <label for="hoTen">Họ tên</label>
+        <input type="text" pInputText id="hoTen" [(ngModel)]="nhanvien.hoTen" required autofocus />
+        <small class="p-error" *ngIf="submitted && !nhanvien.hoTen">Họ tên là bắt buộc.</small>
+      </div>
+      <div class="field mb-3 col-4">
+        <label for="userName">UserName</label>
+        <input type="text" pInputText id="userName" [(ngModel)]="nhanvien.userName" required autofocus />
+        <small class="p-error" *ngIf="submitted && !nhanvien.userName">Họ tên là bắt buộc.</small>
+      </div>
+    </div>
+
+    <div class="row grid">
+      <div class="field mb-3 col-4">
+        <label for="email">Email</label>
+        <input type="text" pInputText id="email" [(ngModel)]="nhanvien.email" required autofocus />
+        <small class="p-error" *ngIf="submitted && !nhanvien.email">Email là bắt buộc.</small>
+      </div>
+
+      <div *ngIf="!shouldDisplayImage" class="field mb-3 col-4">
+        <label for="pass">Mật khẩu</label>
+        <input type="password" pInputText id="pass" [(ngModel)]="nhanvien.passWord" required autofocus />
+        <small class="p-error" *ngIf="submitted && !nhanvien.passWord">Mật khẩu là bắt buộc.</small>
+      </div>
+      <div class="field mb-3 col-4">
+        <label for="diaChi">Địa chỉ</label>
+        <input type="text" pInputText id="diaChi" [(ngModel)]="nhanvien.diaChi" required autofocus />
+        <small class="p-error" *ngIf="submitted && !nhanvien.diaChi">Địa chỉ là bắt buộc.</small>
+      </div>
+    </div>
+
+    <div class="row grid">
+      <div class="field mb-3 col-4">
+        <label for="soDienThoai">Số điện thoại</label>
+        <input type="text" pInputText id="soDienThoai" [(ngModel)]="nhanvien.soDienThoai" required autofocus />
+        <small class="p-error" *ngIf="submitted && !nhanvien.soDienThoai">Số điện thoại là bắt
+          buộc.</small>
+      </div>
+      <div class="field mb-3 col-4">
+        <label for="gioiTinh">Giới tính</label>
+        <p-dropdown [options]="genders" [(ngModel)]="selectGender" optionLabel="name"></p-dropdown>
+      </div>
+      <div class="field mb-3 col-4">
+        <label for="ngaySinh">Ngày sinh</label>
+        <p-calendar [(ngModel)]="nhanvien.ngaySinh" [dateFormat]="'dd-mm-yy'" [showIcon]="true" required
+          autofocus></p-calendar>
+        <small class="p-error" *ngIf="submitted && !nhanvien.ngaySinh">Ngày sinh là bắt buộc.</small>
+      </div>
+    </div>
+    <div class="row grid">
+      <div class="field mb-3 col-6">
+        <label for="duongDanAnh">Ảnh</label>
+        <div>
+          <input autocomplete="off" type="file" id="file" (change)="onFileOnly($event)" />
+          <label for="file" class="file-upload-btn">Tải ảnh</label>
+        </div>
+        <div *ngIf="fileOnly" class="file-selected">
+          <ng-container *ngIf="shouldDisplayImage">
+            <img width="200px" style="margin: auto; border-radius: 5px" src="{{ baseUrl }}Uploads/NhanVien/{{
+                            fileOnly.name }}" />
+          </ng-container>
+          <ng-container *ngIf="!shouldDisplayImage">
+            {{ fileOnly.name }}
+          </ng-container>
+        </div>
+      </div>
+      <div class="field mb-3 col-6">
+        <label for="trangThai">Trạng thái</label>
+        <br>
+        <p-inputSwitch [(ngModel)]="nhanvien.trangThai"></p-inputSwitch>
+      </div>
+    </div>
+
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Hủy" icon="pi pi-times" class="p-button-text" (click)="hidenDialog()"></button>
+    <button pButton pRipple label="{{ Save }}" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px', }"></p-confirmDialog>

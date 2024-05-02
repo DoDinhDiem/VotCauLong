@@ -1,0 +1,115 @@
+<div class="pagetitle">
+  <h1>Dashboard</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="row">
+
+    <div class="col-lg-12">
+      <div class="row">
+
+        <!-- Sales Card -->
+        <div class="col-xxl-3 col-md-6">
+          <div class="card info-card sales-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Đơn hàng</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-cart"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ countDonHang }}</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-xxl-3 col-md-6">
+          <div class="card info-card revenue-card">
+            <div class="card-body">
+              <h5 class="card-title">Doanh thu</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ countDoanhThu }}</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xxl-3 col-xl-12">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Khác hàng</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-people"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ countKhachHang }}</h6>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xxl-3 col-xl-12">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Sản phẩm</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-menu-button-wide"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ countSanPham }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+
+      <div class="col-lg-12">
+        <div class="d-flex">
+          <h4 class="header-title mb-3">Thống kê các tháng trong năm</h4>
+          <p-dropdown [options]="years" [(ngModel)]="selectedYear" [ngStyle]="{'margin-left': 'auto'}"></p-dropdown>
+        </div>
+        <div class="chart-content-bg mb-2">
+          <div class="row text-center">
+            <div class="col-md-6">
+              <p class="text-muted mb-0 mt-3">Doanh thu năm hiện tại</p>
+              <h2 class="fw-normal mb-3">
+                <span>{{tongNamNow | number}}</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+      </div>
+    </div>
+  </div>
+</section>

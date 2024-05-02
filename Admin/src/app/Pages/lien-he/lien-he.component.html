@@ -1,0 +1,100 @@
+<p-toast></p-toast>
+<p-toolbar styleClass="mb-4 gap-2">
+  <ng-template pTemplate="left">
+    <button pButton pRipple label="Thêm mới" icon="pi pi-plus" class="button-radius me-2" (click)="openNew()"></button>
+  </ng-template>
+
+  <ng-template pTemplate="right">
+    <button pButton pRipple label="Xuất file Excel" icon="pi pi-upload" class="p-button-help button-radius"></button>
+  </ng-template>
+</p-toolbar>
+
+<p-table #dt [value]="lienhes" [paginator]="true" [rows]="10" [globalFilterFields]="['diaChi', 'email', 'soDienThoai']"
+  [tableStyle]="{ 'min-width': '60rem' }" [rowHover]="true"
+  currentPageReportTemplate="Hiển thị từ {first} đến {last} của {totalRecords} mục" [showCurrentPageReport]="true"
+  [scrollable]="true">
+  <ng-template pTemplate="caption">
+    <div class="d-flex align-items-center justify-content-between">
+      <h5 class="m-0">{{ title }}</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+          placeholder="Search..." />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center">Bản đồ</th>
+      <th class="text-center" pSortableColumn="duong">
+        Địa chỉ<p-sortIcon field="duong"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="email">
+        Email<p-sortIcon field="email"></p-sortIcon>
+      </th>
+      <th class="text-center" pSortableColumn="soDienThoai">
+        Số điện thoại<p-sortIcon field="soDienThoai"></p-sortIcon>
+      </th>
+      <th class="text-center">Chức năng</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-lienhe>
+    <tr>
+      <td class="text-center">
+        <div style="width: 150px" [innerHTML]="lienhe.banDo | safe"></div>
+      </td>
+      <td class="text-center">{{ lienhe.diaChi }}</td>
+      <td class="text-center">{{ lienhe.email }}</td>
+      <td class="text-center">{{ lienhe.soDienThoai }}</td>
+      <td class="text-center">
+        <button pButton pRipple icon="pi pi-pencil" style="margin-right: 5px"
+          class="p-button-rounded p-button-success me-2 action-button" (click)="edit(lienhe)"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning action-button"
+          (click)="deleteOnly(lienhe)"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="d-flex align-items-center justify-content-between">
+      Tổng cộng có {{ lienhes ? lienhes.length : 0 }} liên hệ.
+    </div>
+  </ng-template>
+</p-table>
+<p-dialog [(visible)]="Dialog" [style]="{ width: '850px' }" [header]="title" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="row grid">
+      <div class="field mb-3 col-6">
+        <label for="banDo">Bản đồ</label>
+        <input type="text" pInputText id="banDo" [(ngModel)]="lienhe.banDo" required autofocus />
+        <small class="p-error" *ngIf="submitted && !lienhe.banDo">Bản đồ là bắt buộc.</small>
+      </div>
+
+      <div class="field mb-3 col-6">
+        <label for="duong">Địa chỉ</label>
+        <input type="text" pInputText id="duong" [(ngModel)]="lienhe.diaChi" required autofocus />
+        <small class="p-error" *ngIf="submitted && !lienhe.diaChi">Địa chỉ là bắt buộc.</small>
+      </div>
+    </div>
+
+    <div class="row grid">
+      <div class="field mb-3 col-6">
+        <label for="email">Email</label>
+        <input type="email" pInputText id="email" [(ngModel)]="lienhe.email" required autofocus />
+        <small class="p-error" *ngIf="submitted && !lienhe.email">Email là bắt buộc.</small>
+      </div>
+
+      <div class="field mb-3 col-6">
+        <label for="soDienThoai">Số điện thoại</label>
+        <input type="text" pInputText id="soDienThoai" [(ngModel)]="lienhe.soDienThoai" required autofocus />
+        <small class="p-error" *ngIf="submitted && !lienhe.soDienThoai">Số điện thoại là bắt buộc.</small>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Hủy" icon="pi pi-times" class="p-button-text" (click)="hidenDialog()"></button>
+    <button pButton pRipple label="{{ Save }}" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px', }"></p-confirmDialog>

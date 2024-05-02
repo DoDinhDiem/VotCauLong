@@ -1,0 +1,268 @@
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <ul class="list-inline list-unstyled">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/productCategory', sanPham?.loaiSanPhamId]" title="Fruit">{{ tenLoai }}</a></li>
+        <li class='active'>{{ sanPham?.tenSanPham }}</li>
+      </ul>
+    </div>
+  </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+<div class="body-content outer-top-xs">
+  <div class='container'>
+    <div class='row single-product'>
+      <div class='col-md-12'>
+        <div class="detail-block">
+          <div class="row  wow fadeInUp">
+
+            <div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
+              <div class="product-item-holder size-big single-product-gallery small-gallery">
+                <p-galleria [value]="Images" [responsiveOptions]="responsiveOptions" [numVisible]="4">
+                  <ng-template pTemplate="item" let-item>
+                    <img src="{{ baseUrl }}/Uploads/Products/{{ item?.image
+                    }}" style="width: 100%; height: 290px;" />
+                  </ng-template>
+                  <ng-template pTemplate="thumbnail" let-item>
+                    <div class="grid grid-nogutter justify-content-center">
+                      <img src="{{ baseUrl }}/Uploads/Products/{{ item?.image
+                      }}" style="width: 100%;" />
+                    </div>
+                  </ng-template>
+                </p-galleria>
+
+              </div><!-- /.single-product-gallery -->
+            </div><!-- /.gallery-holder -->
+            <div class='col-sm-6 col-md-7 product-info-block'>
+              <div class="product-info">
+                <h1 class="name">{{ sanPham?.tenSanPham }}</h1>
+
+
+
+                <div class="price-container info-container m-t-20">
+                  <div class="row">
+
+
+                    <div class="col-sm-6">
+                      <div class="price-box" *ngIf="sanPham?.phanTram > 0">
+                        <span class="price"> {{ sanPham?.giaBan - (sanPham?.giaBan * sanPham?.phanTram)/100 |
+                          number}}</span>
+                        <span class="price-strike">{{ sanPham?.giaBan | number}}</span>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="favorite-button m-t-10">
+                        <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist"
+                          href="javascript:void(0)" (click)="addToCart(sanPham)">
+                          <i class="fa fa-heart"></i>
+                        </a>
+                        <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare"
+                          href="javascript:void(0)" (click)="addToCart(sanPham)">
+                          <i class="fa fa-signal"></i>
+                        </a>
+                        <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail"
+                          href="javascript:void(0)" (click)="addToCart(sanPham)">
+                          <i class="fa fa-envelope"></i>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div><!-- /.row -->
+                </div><!-- /.price-container -->
+
+                <div class="quantity-container info-container">
+                  <div class="row">
+
+                    <div class="col-sm-2">
+                      <span class="label">SL :</span>
+                    </div>
+
+                    <div class="col-sm-2">
+                      <div class="cart-quantity">
+                        <div class="quant-input">
+                          <div class="arrows">
+                            <div class="arrow plus gradient">
+                              <span class="ir" (click)="increment()">
+                                <i class="icon fa fa-sort-asc"></i>
+                              </span>
+                            </div>
+                            <div class="arrow minus gradient">
+                              <span class="ir" (click)="decrement()">
+                                <i class="icon fa fa-sort-desc"></i>
+                              </span>
+                            </div>
+                          </div>
+                          <input type="text" name="qty" [value]="quantity" min="0">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-7">
+                      <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="btn btn-primary"><i
+                          class="fa fa-shopping-cart inner-right-vs"></i> THÊM VÀO
+                        GIỎ</a>
+                    </div>
+
+
+                  </div><!-- /.row -->
+                </div><!-- /.quantity-container -->
+
+
+
+
+
+
+              </div><!-- /.product-info -->
+            </div><!-- /.col-sm-7 -->
+          </div><!-- /.row -->
+        </div>
+
+        <div class="product-tabs inner-bottom-xs  wow fadeInUp">
+          <div class="row">
+            <div class="col-sm-3">
+              <ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
+                <li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
+              </ul><!-- /.nav-tabs #product-tabs -->
+            </div>
+            <div class="col-sm-9">
+
+              <div class="tab-content">
+
+                <div id="description" class="tab-pane in active">
+                  <div class="product-tab">
+                    <p [innerHTML]="sanPham?.moTa"></p>
+                  </div>
+                </div>
+
+              </div><!-- /.tab-content -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.product-tabs -->
+
+        <!-- ============================================== UPSELL PRODUCTS ============================================== -->
+        <section class="section featured-product wow fadeInUp">
+          <h3 class="section-title">Sản phẩm tương tự</h3>
+          <p-carousel [value]="sanPhams" [numVisible]="4" [numScroll]="4" [circular]="true"
+            [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+            <ng-template let-item pTemplate="item">
+              <div class="item item-carousel">
+                <div class="products">
+                  <div class="product">
+                    <div class="product-image">
+                      <div class="image"> <a [routerLink]="['/chitiet', item.id]">
+                          <img src="{{ baseUrl }}/Uploads/Products/{{ item.image }}" alt=""></a>
+                      </div>
+                    </div>
+
+                    <div class="product-info text-left">
+                      <h3 class="name"><a [routerLink]="['/chitiet', item.id]">{{
+                          item.tenSanPham }}</a></h3>
+                      <div class="description"></div>
+                      <div class="product-price" *ngIf="item.phanTram > 0">
+                        <span class="price"> {{ item.giaBan - (item.giaBan * item.phanTram)/100 | number}} </span>
+                        <span class="price-before-discount">{{ item.giaBan | number}}</span>
+                      </div>
+
+                      <div class="product-price" *ngIf="item.phanTram <= 0">
+                        <span class="price"> {{ item.giaBan | number}} </span>
+                      </div>
+                      <!-- /.product-price -->
+
+                    </div>
+                    <!-- /.product-info -->
+                    <div class="cart clearfix animate-effect">
+                      <div class="action">
+                        <ul class="list-unstyled">
+                          <li class="add-cart-button btn-group">
+                            <button data-toggle="tooltip" (click)="addToCart(item)" class="btn btn-primary icon"
+                              type="button" title="Add Cart">
+                              <i class="fa fa-shopping-cart"></i> </button>
+                            <button class="btn btn-primary cart-btn" type="button">Thêm vào giỏ</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-carousel>
+        </section><!-- /.section -->
+        <!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
+
+      </div><!-- /.col -->
+      <div class="clearfix"></div>
+    </div><!-- /.row -->
+    <!-- ============================================== BRANDS CAROUSEL ============================================== -->
+    <div id="brands-carousel" class="logo-slider wow fadeInUp">
+
+      <div class="logo-slider-inner">
+        <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
+          <div class="item m-t-15">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item m-t-10">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+
+          <div class="item">
+            <a href="javascript:void(0)" (click)="addToCart(sanPham)" class="image">
+              <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt="">
+            </a>
+          </div><!--/.item-->
+        </div><!-- /.owl-carousel #logo-slider -->
+      </div><!-- /.logo-slider-inner -->
+
+    </div><!-- /.logo-slider -->
+    <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
+  </div><!-- /.container -->
+</div>
+<p-toast></p-toast>

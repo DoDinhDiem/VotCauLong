@@ -1,0 +1,267 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 homebanner-holder">
+      <!-- ========================================== SECTION – HERO ========================================= -->
+
+      <div id="hero">
+        <div id="owl-main" class="owl-inner-nav owl-ui-sm">
+          <p-galleria [value]="images" [showThumbnails]="false" [showItemNavigatorsOnHover]="true"
+            [showItemNavigators]="true" [circular]="true" [autoPlay]="true" [transitionInterval]="3000"
+            [responsiveOptions]="SlideOptions">
+            <ng-template pTemplate="item" let-item>
+              <img src="{{ baseUrl }}/Uploads/Slide/{{ item.image }}"
+                style="width: 100%; max-height: 368px;display: block;" alt="Banner 1">
+            </ng-template>
+          </p-galleria>
+
+        </div>
+      </div>
+
+      <!-- ========================================= SECTION – HERO : END ========================================= -->
+
+      <!-- ============================================== INFO BOXES ============================================== -->
+      <div class="info-boxes wow fadeInUp">
+        <div class="info-boxes-inner">
+          <div class="row">
+            <div class="col-md-6 col-sm-4 col-lg-4">
+              <div class="info-box">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4 class="info-box-heading green">Hoàn tiền</h4>
+                  </div>
+                </div>
+                <h6 class="text">Bảo đảm hoàn tiền trong vòng 30 ngày</h6>
+              </div>
+            </div>
+            <!-- .col -->
+
+            <div class="hidden-md col-sm-4 col-lg-4">
+              <div class="info-box">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4 class="info-box-heading green">Miễn phí vận chuyển</h4>
+                  </div>
+                </div>
+                <h6 class="text">Miễn phí vận chuyển cho đơn hàng trên $99</h6>
+              </div>
+            </div>
+            <!-- .col -->
+
+            <div class="col-md-6 col-sm-4 col-lg-4">
+              <div class="info-box">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4 class="info-box-heading green">Khuyến mãi đặc biệt</h4>
+                  </div>
+                </div>
+                <h6 class="text">Giảm thêm $5 cho tất cả các mặt hàng</h6>
+              </div>
+            </div>
+            <!-- .col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.info-boxes-inner -->
+      </div>
+
+      <!-- /.info-boxes -->
+      <!-- ============================================== INFO BOXES : END ============================================== -->
+      <!-- ============================================== SCROLL TABS ============================================== -->
+      <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
+        <div class="more-info-tab clearfix ">
+          <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
+          <!-- /.nav-tabs -->
+        </div>
+        <div class="tab-content outer-top-xs">
+          <div class="tab-pane in active" id="all">
+            <div class="product-slider">
+              <p-carousel [value]="sanPhamMoi" [numVisible]="4" [numScroll]="4" [circular]="true"
+                [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+                <ng-template let-item pTemplate="item">
+                  <div class="item item-carousel">
+                    <div class="products">
+                      <div class="product">
+                        <div class="product-image">
+                          <div class="image"> <a [routerLink]="['/chitiet', item.id]">
+                              <img src="{{ baseUrl }}/Uploads/Products/{{ item.image }}" alt=""></a>
+                          </div>
+                        </div>
+
+                        <div class="product-info text-left">
+                          <h3 class="name"><a [routerLink]="['/chitiet', item.id]">{{ item.tenSanPham }}</a></h3>
+                          <div class="description"></div>
+                          <div class="product-price" *ngIf="item.phanTram > 0">
+                            <span class="price"> {{ item.giaBan - (item.giaBan * item.phanTram)/100 | number}} </span>
+                            <span class="price-before-discount">{{ item.giaBan | number}}</span>
+                          </div>
+
+                          <div class="product-price" *ngIf="item.phanTram <= 0">
+                            <span class="price"> {{ item.giaBan | number}} </span>
+                          </div>
+                          <!-- /.product-price -->
+
+                        </div>
+                        <!-- /.product-info -->
+                        <div class="cart clearfix animate-effect">
+                          <div class="action">
+                            <ul class="list-unstyled">
+                              <li class="add-cart-button btn-group">
+                                <button data-toggle="tooltip" (click)="addToCart(item)" class="btn btn-primary icon"
+                                  type="button" title="Add Cart">
+                                  <i class="fa fa-shopping-cart"></i> </button>
+                                <button class="btn btn-primary cart-btn" type="button">Thêm vào giỏ</button>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </p-carousel>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================== WIDE PRODUCTS : END ============================================== -->
+      <!-- ============================================== FEATURED PRODUCTS ============================================== -->
+      <section class="section featured-product wow fadeInUp">
+        <h3 class="section-title">Sản phẩm giảm giá</h3>
+        <p-carousel [value]="sanPhamGiamGia" [numVisible]="4" [numScroll]="4" [circular]="true"
+          [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+          <ng-template let-item pTemplate="item">
+            <div class="item item-carousel">
+              <div class="products">
+                <div class="product">
+                  <div class="product-image">
+                    <div class="image"> <a [routerLink]="['/chitiet', item.id]">
+                        <img src="{{ baseUrl }}/Uploads/Products/{{ item.image }}" alt=""></a>
+                    </div>
+                  </div>
+
+                  <div class="product-info text-left">
+                    <h3 class="name"><a [routerLink]="['/chitiet', item.id]">{{
+                        item.tenSanPham }}</a></h3>
+                    <div class="description"></div>
+                    <div class="product-price" *ngIf="item.phanTram > 0">
+                      <span class="price"> {{ item.giaBan - (item.giaBan * item.phanTram)/100 | number}} </span>
+                      <span class="price-before-discount">{{ item.giaBan | number}}</span>
+                    </div>
+
+                    <div class="product-price" *ngIf="item.phanTram <= 0">
+                      <span class="price"> {{ item.giaBan | number}} </span>
+                    </div>
+                    <!-- /.product-price -->
+
+                  </div>
+                  <!-- /.product-info -->
+                  <div class="cart clearfix animate-effect">
+                    <div class="action">
+                      <ul class="list-unstyled">
+                        <li class="add-cart-button btn-group">
+                          <button data-toggle="tooltip" (click)="addToCart(item)" class="btn btn-primary icon"
+                            type="button" title="Add Cart">
+                            <i class="fa fa-shopping-cart"></i> </button>
+                          <button class="btn btn-primary cart-btn" type="button">Thêm vào giỏ</button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </section>
+      <div class="best-deal wow fadeInUp outer-bottom-xs">
+        <h3 class="section-title">Sản phẩm bán chạy</h3>
+        <div class="sidebar-widget-body outer-top-xs">
+          <p-carousel [value]="sanPhamBanChay" [numVisible]="4" [numScroll]="4" [circular]="true"
+            [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+            <ng-template let-item pTemplate="item">
+              <div class="item">
+                <div class="products">
+                  <div class="product">
+                    <div class="product-image">
+                      <div class="image"> <a [routerLink]="['/chitiet', item.id]">
+                          <img src="{{ baseUrl }}/Uploads/Products/{{ item.image }}" alt=""></a>
+                      </div>
+                    </div>
+
+                    <div class="product-info text-left">
+                      <h3 class="name"><a [routerLink]="['/chitiet', item.id]">{{
+                          item.tenSanPham }}</a></h3>
+                      <div class="description"></div>
+                      <div class="product-price" *ngIf="item.phanTram > 0">
+                        <span class="price"> {{ item.giaBan - (item.giaBan * item.phanTram)/100 | number}} </span>
+                        <span class="price-before-discount">{{ item.giaBan | number}}</span>
+                      </div>
+
+                      <div class="product-price" *ngIf="item.phanTram <= 0">
+                        <span class="price"> {{ item.giaBan | number}} </span>
+                      </div>
+                      <!-- /.product-price -->
+
+                    </div>
+                    <!-- /.product-info -->
+                    <div class="cart clearfix animate-effect">
+                      <div class="action">
+                        <ul class="list-unstyled">
+                          <li class="add-cart-button btn-group">
+                            <button data-toggle="tooltip" (click)="addToCart(item)" class="btn btn-primary icon"
+                              type="button" title="Thêm vào giỏ">
+                              <i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-carousel>
+        </div>
+        <!-- /.sidebar-widget-body -->
+      </div>
+      <!-- /.sidebar-widget -->
+      <!-- ============================================== BEST SELLER : END ============================================== -->
+
+      <!-- ============================================== BLOG SLIDER ============================================== -->
+      <section class="section latest-blog outer-bottom-vs wow fadeInUp">
+        <h3 class="section-title">Tin tức</h3>
+        <div class="blog-slider-container outer-top-xs">
+          <p-carousel [value]="newpaper" [numVisible]="3" [numScroll]="3" [circular]="true" [showIndicators]="false"
+            [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+            <ng-template let-item pTemplate="item">
+              <div class="item">
+                <div class="blog-post">
+                  <div class="blog-post-image">
+                    <div class="image"> <a href="blog.html"><img src="{{ baseUrl }}/Uploads/TinTuc/{{ item.image }}"
+                          alt=""></a>
+                    </div>
+                  </div>
+                  <!-- /.blog-post-image -->
+
+                  <div class="blog-post-info text-left">
+                    <h3 class="name"><a href="#">{{ item.tieuDe }}</a></h3>
+                  </div>
+                  <!-- /.blog-post-info -->
+
+                </div>
+                <!-- /.blog-post -->
+              </div>
+            </ng-template>
+          </p-carousel>
+          <!-- /.owl-carousel -->
+        </div>
+        <!-- /.blog-slider-container -->
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>

@@ -1,0 +1,87 @@
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <ul class="list-inline list-unstyled">
+        <li><a [routerLink]="['/']">Trang chủ</a></li>
+        <li class='active'>Đăng nhập</li>
+      </ul>
+    </div><!-- /.breadcrumb-inner -->
+  </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+
+<div class="body-content">
+  <div class="container">
+    <div class="sign-in-page">
+      <div class="row">
+        <!-- Đăng nhập -->
+        <div class="col-md-6 col-sm-6 sign-in">
+          <h4 class="">Đăng nhập</h4>
+          <p class="">Xin chào, Chào mừng bạn đến với tài khoản của bạn.</p>
+          <div class="social-sign-in outer-top-xs">
+            <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Đăng nhập bằng Facebook</a>
+            <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Đăng nhập bằng Twitter</a>
+          </div>
+          <form class="register-form outer-top-xs" role="form">
+            <div class="form-group">
+              <label class="info-title" for="exampleInputEmail1">UserName <span>*</span></label>
+              <input type="text" [(ngModel)]="khachhang.userName" name="userName1"
+                class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+            </div>
+            <div class="form-group">
+              <label class="info-title" for="exampleInputPassword1">Mật khẩu <span>*</span></label>
+              <input type="password" [(ngModel)]="khachhang.passWord" name="passWord1"
+                class="form-control unicase-form-control text-input" id="exampleInputPassword1">
+            </div>
+            <div class="radio outer-xs">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Nhớ mật khẩu!
+              </label>
+              <a href="#" class="forgot-password pull-right">Quên mật khẩu của bạn?</a>
+            </div>
+            <button type="submit" (click)="singIn()" class="btn-upper btn btn-primary checkout-page-button">Đăng
+              nhập</button>
+          </form>
+        </div>
+        <!-- Đăng nhập -->
+
+        <!-- Tạo tài khoản mới -->
+        <div class="col-md-6 col-sm-6 create-new-account">
+          <h4 class="checkout-subtitle">Tạo tài khoản mới</h4>
+          <p class="text title-tag-line">Tạo tài khoản mới của bạn.</p>
+          <form class="register-form outer-top-xs" role="form">
+            <div class="form-group">
+              <label class="info-title" for="exampleInputEmail11">UserName <span>*</span></label>
+              <input type="text" [(ngModel)]="khachhang.userName" name="userName2"
+                class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+            </div>
+            <div class="form-group">
+              <label class="info-title" for="exampleInputEmail2">Địa chỉ Email <span>*</span></label>
+              <input type="email" [(ngModel)]="khachhang.email" name="email2"
+                class="form-control unicase-form-control text-input" id="exampleInputEmail2">
+            </div>
+            <div class="form-group">
+              <label class="info-title" for="exampleInputEmail1">Tên <span>*</span></label>
+              <input type="text" [(ngModel)]="khachhang.hoTen" name="hoTen"
+                class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+            </div>
+            <div class="form-group">
+              <label class="info-title" for="exampleInputEmail1">Số điện thoại <span>*</span></label>
+              <input type="text" [(ngModel)]="khachhang.soDienThoai" name="soDienThoai"
+                class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+            </div>
+            <div class="form-group">
+              <label class="info-title" for="exampleInputEmail1">Mật khẩu <span>*</span></label>
+              <input type="password" [(ngModel)]="khachhang.passWord" name="passWord2"
+                class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+            </div>
+            <button type="submit" (click)="signUp()" class="btn-upper btn btn-primary checkout-page-button">Đăng
+              ký</button>
+          </form>
+
+        </div>
+        <!-- Tạo tài khoản mới -->
+      </div><!-- /.row -->
+    </div><!-- /.sigin-in-->
+  </div><!-- /.container -->
+</div>
+<p-toast></p-toast>
